@@ -1,5 +1,15 @@
 *Bug tracker at https://github.com/giampaolo/psutil/issues*
 
+(IN DEVELOPMENT)
+======================
+
+XXXX-XX-XX
+
+**Enhancements**
+
+- 2126_, [Linux]: build and test ``musllinux`` wheels.  (patch by Ben Raz)
+
+
 7.1.0
 =====
 
