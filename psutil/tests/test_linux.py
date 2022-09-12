@@ -998,9 +998,12 @@ class TestSystemNetIfStats(PsutilTestCase):
         # first line looks like this:
         # "eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500"
         matches_found = 0
+        error_output = ""
         for name, stats in psutil.net_if_stats().items():
             try:
                 out = sh("ifconfig %s" % name)
+                command = "ifconfig %s" % name
+                error_output += f"ifconfig command: {command}\noutput:\n{out}\n"
             except RuntimeError:
                 pass
             else:
@@ -1012,7 +1015,7 @@ class TestSystemNetIfStats(PsutilTestCase):
                     self.assertEqual(ifconfig_flags, psutil_flags)
 
         if not matches_found:
-            raise self.fail("no matches were found")
+            raise self.fail(f"no matches were found\n{error_output}")
 
 
 @unittest.skipIf(not LINUX, "LINUX only")
