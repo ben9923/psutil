@@ -177,6 +177,9 @@ test-extras = "test"
 [tool.cibuildwheel.macos]
 archs = ["arm64", "x86_64"]
 
+[tool.cibuildwheel.linux]
+before-all = "yum install -y net-tools"
+
 [[tool.cibuildwheel.overrides]]
 select = "*-musllinux*"
 before-all = "apk --no-cache add coreutils procps"
